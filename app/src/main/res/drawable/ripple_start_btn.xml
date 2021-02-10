@@ -6,10 +6,11 @@
         android:shape="oval" >
         <solid android:color="@color/green_100"></solid>
     </shape>
+    </item>
  <item android:drawable="@drawable/start_btn_shape">
  </item>
 
 
 
-    </item>
+
 </ripple>

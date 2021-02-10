@@ -13,11 +13,13 @@
         />
 
 <LinearLayout
+    android:id="@+id/ll_start_btn"
     android:layout_margin="14dp"
     android:layout_width="150dp"
     android:layout_height="150dp"
     android:layout_gravity="center"
     android:background="@drawable/ripple_start_btn">
+
     <TextView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
