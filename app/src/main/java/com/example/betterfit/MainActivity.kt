@@ -17,7 +17,7 @@ class MainActivity : AppCompatActivity() {
         startBtn.setOnClickListener {
             val i =Intent(this,ExerciseActivity::class.java)
             startActivity(i)
-
+            overridePendingTransition(R.anim.slide_in_right,R.anim.slide_out_left)
         }
 
     }
