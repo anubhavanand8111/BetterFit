@@ -4,7 +4,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ExerciseActivity">
+    tools:context=".ExerciseActivity"
+    android:background="@color/white">
 
     <androidx.appcompat.widget.Toolbar
         android:id="@+id/exercise_activity_toolbar"
@@ -12,5 +13,121 @@
         android:layout_height="wrap_content"
 
         android:background="@color/green_500"/>
+    <LinearLayout
+        android:id="@+id/llRestView"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@+id/exercise_activity_toolbar"
+        android:gravity="center"
+        android:orientation="vertical"
+        android:visibility="visible"
+       >
+      <TextView
+          android:layout_width="wrap_content"
+          android:layout_height="wrap_content"
+          android:text="Steel Yourself"
+          android:textColor="@color/green_500"
+          android:textSize="24sp"
+          android:textStyle="bold"
+          android:textAllCaps="true"/>
+        <FrameLayout
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:layout_marginTop="10dp"
+            android:background="@drawable/start_btn_shape">
+
+            <ProgressBar
+                android:id="@+id/progressBar"
+                style="?android:attr/progressBarStyleHorizontal"
+                android:layout_width="100dp"
+                android:layout_height="100dp"
+                android:layout_gravity="center"
+                android:background="@drawable/circular_progress_bar_grey"
+                android:indeterminate="false"
+                android:max="10"
+                android:progress="100"
+                android:progressDrawable="@drawable/circular_progress_bar"
+                android:rotation="-90" />
+            <LinearLayout
+                android:layout_width="60dp"
+                android:layout_height="60dp"
+                android:gravity="center"
+                android:background="@drawable/timer_circle_border"
+                android:layout_gravity="center">
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/tvTimer"
+                    android:textColor="@color/white"
+                    android:textSize="25sp"
+                    android:textStyle="bold"
+                    tools:text="10"
+                    />
+
+            </LinearLayout>
+        </FrameLayout>
+
+
+
+
+    </LinearLayout>
+    <LinearLayout
+        android:id="@+id/llExerciseView"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@+id/exercise_activity_toolbar"
+        android:gravity="center"
+        android:orientation="vertical"
+        android:visibility="invisible"
+        >
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Exersie Name"
+            android:textColor="@color/green_500"
+            android:textSize="24sp"
+            android:textStyle="bold"
+            android:textAllCaps="true"/>
+        <FrameLayout
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:layout_marginTop="10dp"
+            android:background="@drawable/start_btn_shape">
+
+            <ProgressBar
+                android:id="@+id/progressBarExcercise"
+                style="?android:attr/progressBarStyleHorizontal"
+                android:layout_width="100dp"
+                android:layout_height="100dp"
+                android:layout_gravity="center"
+                android:background="@drawable/circular_progress_bar_grey"
+                android:indeterminate="false"
+                android:max="10"
+                android:progress="100"
+                android:progressDrawable="@drawable/circular_progress_bar"
+                android:rotation="-90" />
+            <LinearLayout
+                android:layout_width="60dp"
+                android:layout_height="60dp"
+                android:gravity="center"
+                android:background="@drawable/timer_circle_border"
+                android:layout_gravity="center">
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/tvExerciseTimer"
+                    android:textColor="@color/white"
+                    android:textSize="25sp"
+                    android:textStyle="bold"
+                    tools:text="10"
+                    />
+
+            </LinearLayout>
+        </FrameLayout>
+
+
+
+
+    </LinearLayout>
 
 </RelativeLayout>
