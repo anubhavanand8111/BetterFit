@@ -66,8 +66,25 @@
 
             </LinearLayout>
         </FrameLayout>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Upcoming Exercise"
+            android:textAllCaps="true"
+            android:textSize="18sp"
+            android:layout_marginTop="14dp"
+            android:textColor="#777"
+            />
 
-
+        <TextView
+            android:id="@+id/tvNextExercise"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textStyle="bold"
+            tools:text="Jumpin Jacks"
+           android:textColor="@color/black"
+            android:textSize="22sp"
+            android:layout_marginTop="10dp"/>
 
 
     </LinearLayout>
@@ -78,9 +95,17 @@
         android:layout_below="@+id/exercise_activity_toolbar"
         android:gravity="center"
         android:orientation="vertical"
-        android:visibility="invisible"
+        android:visibility="gone"
         >
+        <ImageView
+            android:id="@+id/ivImage"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:scaleType="fitXY"
+            />
         <TextView
+            android:id="@+id/tvExerciseName"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Exersie Name"
@@ -102,8 +127,8 @@
                 android:layout_gravity="center"
                 android:background="@drawable/circular_progress_bar_grey"
                 android:indeterminate="false"
-                android:max="10"
-                android:progress="100"
+                android:max="30"
+                android:progress="300"
                 android:progressDrawable="@drawable/circular_progress_bar"
                 android:rotation="-90" />
             <LinearLayout
