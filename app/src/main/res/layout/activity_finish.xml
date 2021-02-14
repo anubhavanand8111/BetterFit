@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:gravity="center_horizontal"
+    android:orientation="vertical"
+    tools:context=".FinishActivity">
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/finishActivityToolbar"
+        android:layout_width="match_parent"
+        android:layout_height="?android:attr/actionBarSize"
+        android:background="@color/green_500"/>
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="END"
+        android:textSize="35sp"
+        android:textColor="@color/green_500"
+        android:textStyle="bold"
+        android:layout_marginTop="34dp"/>
+
+    <ImageView
+        android:layout_width="150dp"
+        android:layout_height="150dp"
+        android:padding="30dp"
+        android:layout_marginTop="35dp"
+        android:background="@drawable/start_btn_shape"
+
+        android:src="@drawable/ic_baseline_done_24" />
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="34dp"
+            android:textSize="24sp"
+            android:text="Congratulations!"/>
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="4dp"
+        android:textSize="24sp"
+        android:text="You have finished the workout!"/>
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/green_500"
+        android:textColor="@color/white"
+        android:text="FINISH"
+        android:id="@+id/finishBtn"
+        android:textSize="24sp"
+        android:layout_marginTop="24dp"/>
+
+</LinearLayout>

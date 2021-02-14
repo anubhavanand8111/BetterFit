@@ -1,12 +1,15 @@
 package com.example.betterfit
 
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.os.CountDownTimer
 import android.speech.tts.TextToSpeech
 import android.view.View
+import android.widget.LinearLayout
 import android.widget.Toast
 import androidx.appcompat.widget.Toolbar
+import androidx.recyclerview.widget.LinearLayoutManager
 import kotlinx.android.synthetic.main.activity_exercise.*
 import java.util.*
 import kotlin.collections.ArrayList
@@ -20,6 +23,7 @@ class ExerciseActivity : AppCompatActivity(), TextToSpeech.OnInitListener {
     private var tts:TextToSpeech?=null
     private var exerciseList : ArrayList<ExerciseModel>?=null
     private var currentPosition=-1
+    private var exerciseAdapter:ExerciseStatusAdapter?=null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -35,12 +39,13 @@ class ExerciseActivity : AppCompatActivity(), TextToSpeech.OnInitListener {
 
         }
         setupRestView()
+        setupStatusRecyclerView()
     }
 
     override fun onBackPressed() {
         super.onBackPressed()
         overridePendingTransition(R.anim.slide_in_left,
-                R.anim.slide_out_right);
+                R.anim.slide_out_right)
     }
 
     private fun setRestProgressBar(){
@@ -59,6 +64,8 @@ class ExerciseActivity : AppCompatActivity(), TextToSpeech.OnInitListener {
 
 
                 currentPosition++
+                exerciseList!![currentPosition].setIsSelected(true)
+                exerciseAdapter!!.notifyDataSetChanged()
                 setupExerciseView()
             }
 
@@ -80,11 +87,17 @@ class ExerciseActivity : AppCompatActivity(), TextToSpeech.OnInitListener {
 
             override fun onFinish() {
                 if (currentPosition< exerciseList!!.size-1){
+                    exerciseList!![currentPosition].setIsSelected(false)
+                    exerciseList!![currentPosition].setIsCompleted(true)
+                    exerciseAdapter!!.notifyDataSetChanged()
                     setupRestView()
+
 
                 }
                 else{
-                    Toast.makeText(this@ExerciseActivity, "congodone", Toast.LENGTH_SHORT).show()
+                    val i=Intent(this@ExerciseActivity,FinishActivity::class.java)
+                    startActivity(i)
+                    finish()
                 }
             }
 
@@ -115,6 +128,7 @@ class ExerciseActivity : AppCompatActivity(), TextToSpeech.OnInitListener {
         speakOut(exerciseList!![currentPosition].getName())
         ivImage.setImageResource(exerciseList!![currentPosition].getImage())
         tvExerciseName.text = exerciseList!![currentPosition].getName()
+
         setExerciseProgressBar()
     }
 
@@ -149,5 +163,43 @@ class ExerciseActivity : AppCompatActivity(), TextToSpeech.OnInitListener {
 
     private fun speakOut(text:String){
         tts!!.speak(text,TextToSpeech.QUEUE_FLUSH,null,"")
+
+    }
+
+    private fun setupStatusRecyclerView(){
+        exerciseAdapter= ExerciseStatusAdapter(exerciseList!!)
+        val layoutManager = LinearLayoutManager(applicationContext,LinearLayoutManager.HORIZONTAL,false)
+        rvStatus.layoutManager = layoutManager
+        rvStatus.adapter=exerciseAdapter
     }
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
