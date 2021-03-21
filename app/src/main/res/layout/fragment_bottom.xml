@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:id="@+id/llBottomSheet"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        android:orientation="vertical"
+        android:layout_gravity="center_horizontal"
+
+        android:gravity="center_horizontal"
+
+        tools:context=".BottomFragment">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center_horizontal"
+            android:orientation="vertical"
+            android:layout_marginTop="24dp">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="28sp"
+                android:textColor="@color/green_500"
+                android:textStyle="bold"
+                android:text="@string/tutorial_video"/>
+            <View
+                android:layout_width="32dp"
+                android:layout_height="4dp"
+                android:background="@color/green_500"
+                android:layout_marginTop="2dp"
+
+                />
+
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+
+        </LinearLayout>
+
+    <com.pierfrancescosoffritti.androidyoutubeplayer.core.player.views.YouTubePlayerView
+        android:id="@+id/youTubePlayerView"
+        android:layout_width="match_parent"
+        android:layout_height="300dp"
+        android:paddingTop="16dp"
+        android:paddingBottom="16dp"
+        app:videoId="H1F-UfC8Mb8"
+        app:autoPlay="true"
+        app:showFullScreenButton="false" />
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/close"
+        android:backgroundTint="@color/green_500"
+        android:textColor="@color/white"
+        app:cornerRadius="20dp"
+        android:textSize="20sp"
+        android:padding="10dp"
+        android:id="@+id/btnClose"
+        >
+    </Button>
+    </LinearLayout>
+

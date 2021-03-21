@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<com.google.android.material.card.MaterialCardView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_margin="12dp"
+    app:cardCornerRadius="8dp"
+    android:elevation="8dp"
+    android:backgroundTint="@color/green_100"
+    android:theme="@style/Theme.MaterialComponents.Light"
+    android:layout_height="wrap_content">
+
+    <TextView xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:textColor="@color/green_500"
+        android:layout_margin="14dp"
+        android:textSize="25sp"
+        android:id="@+id/tvDate"
+        tools:text="12 Sept 2020" />
+</com.google.android.material.card.MaterialCardView>
+
+

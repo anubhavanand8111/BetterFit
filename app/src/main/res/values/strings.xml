@@ -1,4 +1,8 @@
 <resources>
     <string name="app_name">BetterFit</string>
     <string name="stat_btn">START</string>
+    <string name="close">CLOSE</string>
+    <string name="tutorial_video">Tutorial Video</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
 </resources>

@@ -1,18 +1,25 @@
 package com.example.betterfit
 
+import android.annotation.SuppressLint
+import android.app.Dialog
 import android.content.Intent
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.os.CountDownTimer
 import android.speech.tts.TextToSpeech
+import android.util.Log
 import android.view.View
-import android.widget.LinearLayout
 import android.widget.Toast
+import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.Toolbar
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.pierfrancescosoffritti.androidyoutubeplayer.core.player.YouTubePlayer
+import com.pierfrancescosoffritti.androidyoutubeplayer.core.player.listeners.AbstractYouTubePlayerListener
 import kotlinx.android.synthetic.main.activity_exercise.*
+import kotlinx.android.synthetic.main.custom_dialog_back.*
+import kotlinx.android.synthetic.main.fragment_bottom.*
+
 import java.util.*
-import kotlin.collections.ArrayList
+
 
 class ExerciseActivity : AppCompatActivity(), TextToSpeech.OnInitListener {
 
@@ -25,32 +32,55 @@ class ExerciseActivity : AppCompatActivity(), TextToSpeech.OnInitListener {
     private var currentPosition=-1
     private var exerciseAdapter:ExerciseStatusAdapter?=null
 
+    @SuppressLint("InflateParams")
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_exercise)
         val toolbar = findViewById<Toolbar>(R.id.exercise_activity_toolbar)
 
         exerciseList = Constants.defaultExcerciseList()
-        tts = TextToSpeech(this,this)
+        tts = TextToSpeech(this, this)
         setSupportActionBar(toolbar)
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
         toolbar.setNavigationOnClickListener {
-            onBackPressed()
+            customDialog()
+
 
         }
         setupRestView()
         setupStatusRecyclerView()
+
+        btnViewTutorial.setOnClickListener {
+
+            val bundle = Bundle()
+            val videoid = exerciseList!![currentPosition+1].getExerciseLink()
+
+            bundle.putString("id",videoid)
+
+            restTimer?.cancel()
+            BottomFragment().apply {
+                show(supportFragmentManager, "BottomSheet")
+                arguments=bundle
+
+            }
+
+
+        }
+
+
     }
 
     override fun onBackPressed() {
         super.onBackPressed()
-        overridePendingTransition(R.anim.slide_in_left,
-                R.anim.slide_out_right)
+        overridePendingTransition(
+            R.anim.slide_in_left,
+            R.anim.slide_out_right
+        )
     }
 
     private fun setRestProgressBar(){
         progressBar.progress= restProgress
-        restTimer= object:CountDownTimer(10000,1000){
+        restTimer= object:CountDownTimer(10000, 1000){
             override fun onTick(millisUntilFinished: Long) {
 
                 restProgress++
@@ -75,7 +105,7 @@ class ExerciseActivity : AppCompatActivity(), TextToSpeech.OnInitListener {
 
     private fun setExerciseProgressBar(){
         progressBarExcercise.progress= exerciseProgress
-        exerciseTimer= object:CountDownTimer(30000,1000){
+        exerciseTimer= object:CountDownTimer(30000, 1000){
             override fun onTick(millisUntilFinished: Long) {
 
                 exerciseProgress++
@@ -95,9 +125,13 @@ class ExerciseActivity : AppCompatActivity(), TextToSpeech.OnInitListener {
 
                 }
                 else{
-                    val i=Intent(this@ExerciseActivity,FinishActivity::class.java)
+                    val i=Intent(this@ExerciseActivity, FinishActivity::class.java)
                     startActivity(i)
                     finish()
+                    overridePendingTransition(
+                        R.anim.slide_in_left,
+                        R.anim.slide_out_right
+                    )
                 }
             }
 
@@ -106,7 +140,8 @@ class ExerciseActivity : AppCompatActivity(), TextToSpeech.OnInitListener {
     }
 
 
-    private fun setupRestView(){
+    fun setupRestView(){
+        btnViewTutorial.visibility=View.VISIBLE
         llRestView.visibility=View.VISIBLE
         llExerciseView.visibility=View.GONE
         if (restTimer!=null){
@@ -114,10 +149,11 @@ class ExerciseActivity : AppCompatActivity(), TextToSpeech.OnInitListener {
             restProgress=0
 
         }
-        tvNextExercise.text = exerciseList?.get(currentPosition+1)?.getName() ?: "fgh"
+        tvNextExercise.text = exerciseList?.get(currentPosition + 1)?.getName() ?: "fgh"
         setRestProgressBar()
     }
     private fun setupExerciseView(){
+        btnViewTutorial.visibility=View.GONE
         llRestView.visibility=View.GONE
         llExerciseView.visibility=View.VISIBLE
         if (exerciseTimer!=null){
@@ -161,16 +197,49 @@ class ExerciseActivity : AppCompatActivity(), TextToSpeech.OnInitListener {
         }
     }
 
-    private fun speakOut(text:String){
-        tts!!.speak(text,TextToSpeech.QUEUE_FLUSH,null,"")
+    private fun speakOut(text: String){
+        tts!!.speak(text, TextToSpeech.QUEUE_FLUSH, null, "")
 
     }
 
     private fun setupStatusRecyclerView(){
         exerciseAdapter= ExerciseStatusAdapter(exerciseList!!)
-        val layoutManager = LinearLayoutManager(applicationContext,LinearLayoutManager.HORIZONTAL,false)
+        val layoutManager = LinearLayoutManager(
+            applicationContext,
+            LinearLayoutManager.HORIZONTAL,
+            false
+        )
         rvStatus.layoutManager = layoutManager
         rvStatus.adapter=exerciseAdapter
+    }
+    private fun customDialog(){
+        val customDialog = Dialog(this)
+
+        customDialog.setContentView(R.layout.custom_dialog_back)
+        customDialog.cdYes.setOnClickListener {
+            finish()
+            overridePendingTransition(
+                R.anim.slide_in_left,
+                R.anim.slide_out_right
+            )
+            customDialog.dismiss()
+        }
+
+        customDialog.cdNo.setOnClickListener {
+            customDialog.dismiss()
+        }
+
+        customDialog.show()
+    }
+
+    override fun onPause() {
+        restTimer?.cancel()
+        super.onPause()
+    }
+
+    override fun onResume() {
+        setupRestView()
+        super.onResume()
     }
 }
 

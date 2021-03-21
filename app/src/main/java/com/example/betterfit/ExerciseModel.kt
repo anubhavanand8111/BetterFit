@@ -4,7 +4,8 @@ class ExerciseModel(var id:Int,
                     var name:String,
                     var image:Int,
                     var isCompleted:Boolean,
-                    var isSelected:Boolean) {
+                    var isSelected:Boolean,
+                    var exerciseLink:String) {
 
 
     @JvmName("getId1")
@@ -48,6 +49,15 @@ class ExerciseModel(var id:Int,
 
     fun setIsSelected(isSelected: Boolean){
         this.isSelected=isSelected
+    }
+
+    fun getExerciseLink(exerciseLink:String){
+        this.exerciseLink=exerciseLink
+    }
+
+    @JvmName("getExerciseLink1")
+    fun getExerciseLink():String{
+        return exerciseLink
     }
 
 }
