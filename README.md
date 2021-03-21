@@ -1,2 +1,2 @@
 # BetterFit
-Complete Guide to a Better Fitness 
+Complete Guide for Better Fitness 
