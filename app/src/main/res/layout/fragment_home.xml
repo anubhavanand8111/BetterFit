@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".MainActivity">
+
+
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="320dp"
+        android:src="@drawable/banner"
+        />
+
+
+    <LinearLayout
+        android:id="@+id/ll_start_btn"
+        android:layout_margin="14dp"
+        android:layout_width="150dp"
+        android:layout_height="150dp"
+        android:layout_gravity="center"
+        android:orientation="vertical"
+        android:background="@drawable/ripple_start_btn">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:gravity="center"
+            android:textColor="@color/green_500"
+            android:text="@string/stat_btn"
+            android:textSize="28sp"/>
+    </LinearLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:gravity="center"
+
+        >
+        <LinearLayout
+            android:paddingTop="24dp"
+            android:paddingBottom="14dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:orientation="horizontal"
+            android:gravity="center">
+
+            <TextView
+                android:id="@+id/tvBmi"
+                android:layout_width="100dp"
+                android:layout_height="100dp"
+                android:layout_marginRight="24dp"
+                android:background="@drawable/primary_background_circle"
+                android:gravity="center"
+                android:padding="14dp"
+                android:text="BMI"
+                android:textAllCaps="true"
+                android:textColor="@color/white"
+                android:textSize="28sp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:gravity="center"
+                android:id="@+id/tvHistory"
+                android:layout_width="100dp"
+                android:layout_height="100dp"
+                android:textSize="28sp"
+                android:textColor="@color/white"
+                android:textAllCaps="true"
+                android:textStyle="bold"
+                android:background="@drawable/primary_background_circle"
+                android:padding="14dp"
+                android:layout_marginLeft="24dp"
+                android:text="HISTORY"/>
+        </LinearLayout>
+
+
+
+    </LinearLayout>
+
+
+</LinearLayout>

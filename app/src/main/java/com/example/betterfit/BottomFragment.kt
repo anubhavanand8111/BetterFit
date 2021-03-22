@@ -22,7 +22,6 @@ class BottomFragment : BottomSheetDialogFragment() {
 
 
 
-
     }
 
     override fun onCreateView(
@@ -55,6 +54,13 @@ class BottomFragment : BottomSheetDialogFragment() {
     override fun onDestroy() {
 
         super.onDestroy()
+    }
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        btnClose.setOnClickListener {
+           dismiss()
+        }
+        super.onViewCreated(view, savedInstanceState)
     }
 
 
