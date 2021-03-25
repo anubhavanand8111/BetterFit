@@ -11,6 +11,8 @@ import com.example.betterfit.Services.FitnessCalculatorApiService
 
 import kotlinx.android.synthetic.main.activity_b_m_i.*
 import kotlinx.android.synthetic.main.fragment_bottom.*
+import kotlinx.coroutines.GlobalScope
+import kotlinx.coroutines.launch
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
@@ -80,18 +82,19 @@ class ActivityBMI : AppCompatActivity() {
     }
 
     private fun getBmi() {
-        val bmi=FitnessCalculatorApiService.bmiInstance.getBmi("22","95","172")
-        bmi.enqueue(object :Callback<BmiResponse>{
-            override fun onResponse(call: Call<BmiResponse>, response: Response<BmiResponse>) {
-                val bmi = response.body().toString()
-                Log.d("API",bmi)
-            }
+        GlobalScope.launch { val bmi=FitnessCalculatorApiService.bmiInstance.getBmi("22","95","172")
+            bmi.enqueue(object :Callback<BmiResponse>{
+                override fun onResponse(call: Call<BmiResponse>, response: Response<BmiResponse>) {
+                    val bmi = response.body().toString()
+                    Log.d("API",bmi)
+                }
+               
+                override fun onFailure(call: Call<BmiResponse>, t: Throwable) {
+                    Log.d("API","error")
+                }
 
-            override fun onFailure(call: Call<BmiResponse>, t: Throwable) {
-                Log.d("API","error")
-            }
+            }) }
 
-        })
     }
 
     private fun makeFeetricUnitVisible() {
