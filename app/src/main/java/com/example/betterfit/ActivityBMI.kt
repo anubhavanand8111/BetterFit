@@ -4,11 +4,16 @@ import android.annotation.SuppressLint
 import android.opengl.Visibility
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.util.Log
 import android.view.View
 import android.widget.Toast
+import com.example.betterfit.Services.FitnessCalculatorApiService
 
 import kotlinx.android.synthetic.main.activity_b_m_i.*
 import kotlinx.android.synthetic.main.fragment_bottom.*
+import retrofit2.Call
+import retrofit2.Callback
+import retrofit2.Response
 import java.math.BigDecimal
 import java.math.RoundingMode
 
@@ -35,6 +40,7 @@ class ActivityBMI : AppCompatActivity() {
                 Toast.makeText(this, "Please Enter Value", Toast.LENGTH_SHORT).show()
             }
             else{
+                getBmi()
                 var bmi= weight.toDouble()/(height.toFloat() * height.toDouble())*10000
 
                 tvBmi.text ="Your BMI is ${bmi.toString()}"
@@ -71,6 +77,21 @@ class ActivityBMI : AppCompatActivity() {
          }
 
 
+    }
+
+    private fun getBmi() {
+        val bmi=FitnessCalculatorApiService.bmiInstance.getBmi("22","95","172")
+        bmi.enqueue(object :Callback<BmiResponse>{
+            override fun onResponse(call: Call<BmiResponse>, response: Response<BmiResponse>) {
+                val bmi = response.body().toString()
+                Log.d("API",bmi)
+            }
+
+            override fun onFailure(call: Call<BmiResponse>, t: Throwable) {
+                Log.d("API","error")
+            }
+
+        })
     }
 
     private fun makeFeetricUnitVisible() {
