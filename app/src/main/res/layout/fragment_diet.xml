@@ -1,14 +1,289 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
+<ScrollView android:layout_height="wrap_content"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
+    xmlns:android="http://schemas.android.com/apk/res/android">
+<LinearLayout xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
     tools:context=".fragments.DietFragment">
-
-    <!-- TODO: Update blank fragment layout -->
+<LinearLayout
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical">
     <TextView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:text="@string/hello_blank_fragment" />
+        android:text="@string/select_goal"
+        android:textSize="32sp"
+        android:textColor="@color/black"
+        android:paddingStart="14dp"
+        android:paddingTop="14dp"/>
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:text="@string/select_wisely"
+        android:textSize="22sp"
+        android:textColor="#99000000"
+        android:paddingStart="14dp"
+        android:paddingTop="14dp"/>
+</LinearLayout>
 
-</FrameLayout>
+   <LinearLayout
+       android:layout_width="match_parent"
+       android:layout_height="wrap_content"
+       android:orientation="vertical"
+       android:gravity="center"
+       >
+       <androidx.cardview.widget.CardView
+           android:layout_height="wrap_content"
+           android:layout_margin="12dp"
+           android:background="?attr/selectableItemBackgroundBorderless"
+           android:clickable="true"
+           android:layout_width="match_parent"
+           android:focusable="true">
+           <RelativeLayout
+               android:layout_width="match_parent"
+               android:layout_height="wrap_content">
+               <ImageView
+                   android:layout_width="match_parent"
+                   android:layout_height="172dp"
+
+                   android:id="@+id/maintainIv"
+                   android:src="@drawable/ic_placeholder"/>
+               <FrameLayout
+                   android:layout_width="match_parent"
+                   android:layout_alignBottom="@+id/maintainIv"
+                   android:background="#80000000"
+                   android:layout_height="wrap_content">
+                   <TextView
+                       android:textSize="22sp"
+                       android:textColor="@color/white"
+                        android:padding="5dp"
+                       android:layout_gravity="center_horizontal"
+                       android:layout_width="wrap_content"
+                       android:layout_height="wrap_content"
+                       android:text="@string/maintain"/>
+               </FrameLayout>
+           </RelativeLayout>
+
+       </androidx.cardview.widget.CardView>
+
+<!--       2nd Row-->
+       <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+           android:layout_marginBottom="12dp"
+            android:orientation="horizontal">
+            <androidx.cardview.widget.CardView
+                android:layout_height="wrap_content"
+                android:layout_marginStart="12dp"
+                android:layout_marginEnd="4dp"
+                android:layout_weight="1"
+                android:layout_width="match_parent">
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+                    <ImageView
+                        android:layout_width="match_parent"
+                        android:layout_height="172dp"
+
+                        android:id="@+id/mildloseIv"
+                        android:src="@drawable/ic_placeholder"/>
+                    <FrameLayout
+                        android:layout_width="match_parent"
+                        android:layout_alignBottom="@+id/mildloseIv"
+                        android:background="#80000000"
+                        android:layout_height="wrap_content">
+                        <TextView
+                            android:textSize="22sp"
+                            android:textColor="@color/white"
+                            android:padding="5dp"
+                            android:layout_gravity="center_horizontal"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="@string/mild_lose"/>
+                    </FrameLayout>
+                </RelativeLayout>
+
+            </androidx.cardview.widget.CardView>
+            <androidx.cardview.widget.CardView
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="12dp"
+                android:layout_marginStart="4dp"
+                android:layout_weight="1"
+                android:layout_width="match_parent">
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+                    <ImageView
+                        android:layout_width="match_parent"
+                        android:layout_height="172dp"
+
+                        android:id="@+id/weightloseIv"
+                        android:src="@drawable/ic_placeholder"/>
+                    <FrameLayout
+                        android:layout_width="match_parent"
+                        android:layout_alignBottom="@+id/weightloseIv"
+                        android:background="#80000000"
+                        android:layout_height="wrap_content">
+                        <TextView
+                            android:textSize="22sp"
+                            android:textColor="@color/white"
+                            android:padding="5dp"
+                            android:layout_gravity="center_horizontal"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="@string/weight_lose"/>
+                    </FrameLayout>
+                </RelativeLayout>
+
+            </androidx.cardview.widget.CardView>
+        </LinearLayout>
+<!--       3rd Row-->
+       <LinearLayout
+           android:layout_width="match_parent"
+           android:layout_height="wrap_content"
+           android:layout_marginBottom="12dp"
+           android:orientation="horizontal">
+           <androidx.cardview.widget.CardView
+               android:layout_height="wrap_content"
+               android:layout_marginStart="12dp"
+               android:layout_marginEnd="4dp"
+               android:layout_weight="1"
+               android:layout_width="match_parent">
+               <RelativeLayout
+                   android:layout_width="match_parent"
+                   android:layout_height="wrap_content">
+                   <ImageView
+                       android:layout_width="match_parent"
+                       android:layout_height="172dp"
+
+                       android:id="@+id/extremeloseIv"
+                       android:src="@drawable/ic_placeholder"/>
+                   <FrameLayout
+                       android:layout_width="match_parent"
+                       android:layout_alignBottom="@+id/extremeloseIv"
+                       android:background="#80000000"
+                       android:layout_height="wrap_content">
+                       <TextView
+                           android:textSize="22sp"
+                           android:textColor="@color/white"
+                           android:padding="5dp"
+                           android:layout_gravity="center_horizontal"
+                           android:layout_width="wrap_content"
+                           android:layout_height="wrap_content"
+                           android:text="@string/extreme_lose"/>
+                   </FrameLayout>
+               </RelativeLayout>
+
+           </androidx.cardview.widget.CardView>
+           <androidx.cardview.widget.CardView
+               android:layout_height="wrap_content"
+               android:layout_marginEnd="12dp"
+               android:layout_marginStart="4dp"
+               android:layout_weight="1"
+               android:layout_width="match_parent">
+               <RelativeLayout
+                   android:layout_width="match_parent"
+                   android:layout_height="wrap_content">
+                   <ImageView
+                       android:layout_width="match_parent"
+                       android:layout_height="172dp"
+
+                       android:id="@+id/mildgainIv"
+                       android:src="@drawable/ic_placeholder"/>
+                   <FrameLayout
+                       android:layout_width="match_parent"
+                       android:layout_alignBottom="@+id/mildgainIv"
+                       android:background="#80000000"
+                       android:layout_height="wrap_content">
+                       <TextView
+                           android:textSize="22sp"
+                           android:textColor="@color/white"
+                           android:padding="5dp"
+                           android:layout_gravity="center_horizontal"
+                           android:layout_width="wrap_content"
+                           android:layout_height="wrap_content"
+                           android:text="@string/mild_gain"/>
+                   </FrameLayout>
+               </RelativeLayout>
+
+           </androidx.cardview.widget.CardView>
+       </LinearLayout>
+<!--       4th Row-->
+       <LinearLayout
+           android:layout_width="match_parent"
+           android:layout_height="wrap_content"
+           android:layout_marginBottom="12dp"
+           android:orientation="horizontal">
+           <androidx.cardview.widget.CardView
+               android:layout_height="wrap_content"
+               android:layout_marginStart="12dp"
+               android:layout_marginEnd="4dp"
+               android:layout_weight="1"
+               android:layout_width="match_parent">
+               <RelativeLayout
+                   android:layout_width="match_parent"
+                   android:layout_height="wrap_content">
+                   <ImageView
+                       android:layout_width="match_parent"
+                       android:layout_height="172dp"
+
+                       android:id="@+id/weightgainIv"
+                       android:src="@drawable/ic_placeholder"/>
+                   <FrameLayout
+                       android:layout_width="match_parent"
+                       android:layout_alignBottom="@+id/weightgainIv"
+                       android:background="#80000000"
+                       android:layout_height="wrap_content">
+                       <TextView
+                           android:textSize="22sp"
+                           android:textColor="@color/white"
+                           android:padding="5dp"
+                           android:layout_gravity="center_horizontal"
+                           android:layout_width="wrap_content"
+                           android:layout_height="wrap_content"
+                           android:text="@string/weight_gain"/>
+                   </FrameLayout>
+               </RelativeLayout>
+
+           </androidx.cardview.widget.CardView>
+           <androidx.cardview.widget.CardView
+               android:layout_height="wrap_content"
+               android:layout_marginEnd="12dp"
+               android:layout_marginStart="4dp"
+               android:layout_weight="1"
+               android:layout_width="match_parent">
+               <RelativeLayout
+                   android:layout_width="match_parent"
+                   android:layout_height="wrap_content">
+                   <ImageView
+                       android:layout_width="match_parent"
+                       android:layout_height="172dp"
+
+                       android:id="@+id/extremegainIv"
+                       android:src="@drawable/ic_placeholder"/>
+                   <FrameLayout
+                       android:layout_width="match_parent"
+                       android:layout_alignBottom="@+id/extremegainIv"
+                       android:background="#80000000"
+                       android:layout_height="wrap_content">
+                       <TextView
+                           android:textSize="22sp"
+                           android:textColor="@color/white"
+                           android:padding="5dp"
+                           android:layout_gravity="center_horizontal"
+                           android:layout_width="wrap_content"
+                           android:layout_height="wrap_content"
+                           android:text="@string/extreme_gain"/>
+                   </FrameLayout>
+               </RelativeLayout>
+
+           </androidx.cardview.widget.CardView>
+       </LinearLayout>
+   </LinearLayout>
+
+
+</LinearLayout>
+</ScrollView>

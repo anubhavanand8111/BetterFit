@@ -5,4 +5,13 @@
     <string name="tutorial_video">Tutorial Video</string>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="select_goal">Select Goal</string>
+    <string name="select_wisely">Select Wisely</string>
+    <string name="maintain">Maintain</string>
+    <string name="mild_lose">Mild lose</string>
+    <string name="weight_lose">Weight lose</string>
+    <string name="extreme_lose">Extreme lose</string>
+    <string name="mild_gain">Mild Gain</string>
+    <string name="weight_gain">Weight Gain</string>
+    <string name="extreme_gain">Extreme Gain</string>
 </resources>
