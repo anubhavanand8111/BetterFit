@@ -58,7 +58,7 @@
         android:layout_height="wrap_content"
         android:layout_below="@+id/radioGroup"
         android:orientation="vertical"
-        android:visibility="gone"
+
         android:id="@+id/heightInCm"
         android:padding="10dp">
 
@@ -74,6 +74,7 @@
                 android:id="@+id/etWeight"
                 android:textColorHint="@color/green_500"
                 android:inputType="number"
+                android:layout_marginBottom="10dp"
                 android:layout_height="wrap_content"
                 android:layout_width="match_parent"/>
         </com.google.android.material.textfield.TextInputLayout>
@@ -91,6 +92,7 @@
                 android:textColorHint="@color/green_500"
                 android:backgroundTint="@color/green_500"
                 android:layout_height="wrap_content"
+
                 android:layout_width="match_parent"/>
         </com.google.android.material.textfield.TextInputLayout>
         <Button
@@ -108,7 +110,22 @@
             tools:text="BMI is"
             android:id="@+id/tvBmi"
             android:textColor="@color/green_500"
-            android:textSize="24sp"/>.
+            android:textSize="24sp"/>
+       <ProgressBar
+           android:layout_width="wrap_content"
+           android:layout_height="wrap_content"
+           android:layout_gravity="center_horizontal"
+           android:visibility="gone"
+           android:id="@+id/bmiProgressBar1"/>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:paddingTop="20dp"
+            android:layout_gravity="center_horizontal"
+            android:textSize="24sp"
+            android:id="@+id/healthTv1"
+            android:textColor="@color/green_500"
+            tools:text="Healthy"/>
 
     </LinearLayout>
     <LinearLayout
@@ -117,6 +134,7 @@
         android:layout_below="@+id/radioGroup"
         android:orientation="vertical"
         android:id="@+id/heightInFoot"
+        tools:visibility="gone"
         android:padding="10dp">
 
         <com.google.android.material.textfield.TextInputLayout
@@ -195,7 +213,22 @@
             tools:text="BMI is"
             android:id="@+id/tvBmi2"
             android:textColor="@color/green_500"
-            android:textSize="24sp"/>.
+            android:textSize="24sp"/>
+        <ProgressBar
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:visibility="gone"
+            android:id="@+id/bmiProgressBar2"/>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:paddingTop="20dp"
+            android:layout_gravity="center_horizontal"
+            android:textSize="24sp"
+            android:id="@+id/healthTv2"
+            android:textColor="@color/green_500"
+            tools:text="Healthy"/>
 
     </LinearLayout>
 
