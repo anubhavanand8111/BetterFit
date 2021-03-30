@@ -2,6 +2,7 @@
 <RelativeLayout
     android:layout_width="wrap_content"
     android:layout_height="match_parent"
+    android:id="@+id/detailRootLayout"
     xmlns:android="http://schemas.android.com/apk/res/android">
 
 
@@ -52,6 +53,7 @@
             <com.google.android.material.textfield.TextInputEditText
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:id="@+id/ageTv"
                 android:hint="Age"
                 android:inputType="number"/>
 
@@ -69,6 +71,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:hint="Height(cm)"
+                android:id="@+id/heightTv"
                 android:inputType="number"/>
 
         </com.google.android.material.textfield.TextInputLayout>
@@ -83,6 +86,7 @@
             <com.google.android.material.textfield.TextInputEditText
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:id="@+id/weightTv"
                 android:hint="Weight(Kg)"
                 android:inputType="number"/>
 
@@ -103,7 +107,7 @@
             <RadioGroup
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-
+                android:id="@+id/genderRg"
                 android:gravity="center_horizontal"
 
 
@@ -114,6 +118,8 @@
                     android:text="Male"
                     android:background="@drawable/gender_radio_selected_background"
                     android:gravity="center"
+                    android:id="@+id/maleRb"
+                    android:checked="true"
                     android:layout_marginRight="14dp"
                     android:button="@null"
                     android:layout_height="wrap_content"
@@ -123,6 +129,7 @@
                     android:layout_weight="1"
                     android:text="Female"
                     android:gravity="center"
+                    android:id="@+id/femaleRb"
                     android:layout_marginLeft="14dp"
                     android:background="@drawable/gender_radio_not_selected_background"
                     android:button="@null"
@@ -145,6 +152,7 @@
             <com.google.android.material.slider.Slider
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:id="@+id/activitySl"
                 android:valueFrom="1"
                 android:valueTo="7"
                 android:stepSize="1"/>
@@ -159,7 +167,7 @@
         android:layout_alignParentRight="true"
         android:layout_margin="14dp"
         android:clickable="true"
-        android:id="@+id/done"
+        android:id="@+id/detailsFab"
 
         android:layout_alignParentBottom="true"
         android:src="@drawable/ic_baseline_done_24"

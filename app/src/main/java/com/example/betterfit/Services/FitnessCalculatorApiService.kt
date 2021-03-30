@@ -1,6 +1,7 @@
 package com.example.betterfit.Services
 
 import com.example.betterfit.BmiResponse
+import com.example.betterfit.CalorieResponse
 import com.google.gson.FieldNamingPolicy
 import com.google.gson.GsonBuilder
 import retrofit2.Call
@@ -24,6 +25,19 @@ interface FitnessCalculatorApiServiceInterface {
         @Query("height") height: String,
 
     ) :Response<BmiResponse>
+
+    @Headers("x-rapidapi-key:$API_KEY_CALC")
+    @GET("/macrocalculator")
+    suspend fun getCalorie(
+            @Query("age") age: String,
+            @Query("gender") gender: String,
+            @Query("height") height: String,
+            @Query("weight") weight: String,
+            @Query("activitylevel") activitylevel: String,
+            @Query("goal") goal: String,
+
+
+            ) :Response<CalorieResponse>
 
 
 }
