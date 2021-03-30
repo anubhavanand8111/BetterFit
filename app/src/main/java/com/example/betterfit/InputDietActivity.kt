@@ -1,13 +1,16 @@
 package com.example.betterfit
 
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
 import android.view.View
-import android.widget.Toast
+import androidx.core.content.ContentProviderCompat.requireContext
+
 import com.example.betterfit.Services.FitnessCalculatorApiService
 import com.google.android.material.snackbar.Snackbar
 import kotlinx.android.synthetic.main.activity_b_m_i.*
+
 import kotlinx.android.synthetic.main.activity_input_diet.*
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.GlobalScope
@@ -60,6 +63,7 @@ class InputDietActivity : AppCompatActivity() {
 
                 if (goal != null) {
                     getCalories(mAge,mGender,mHeight,mWeight,mActivityLevel,goal)
+
                 }
             }
         }
@@ -68,6 +72,7 @@ class InputDietActivity : AppCompatActivity() {
 
     private fun getCalories(mAge: String, mGender: String, mHeight: String, mWeight: String, mActivityLevel: String, goal: String) {
 
+        showPleaseWaitProgressBar()
 
         GlobalScope.launch(Dispatchers.Main) {
 
@@ -75,13 +80,32 @@ class InputDietActivity : AppCompatActivity() {
                 FitnessCalculatorApiService.bmiInstance.getCalorie(mAge,mGender, mHeight,mWeight,mActivityLevel,goal)
             }
             if (response.isSuccessful){
-                Log.d("CALORIE", "calories: ${response.body()?.calorie.toString()}")
+                llPleaseWait.visibility=View.GONE
+                val calorie=response.body()?.calorie.toString()
+                val protein=response.body()?.balanced?.protein.toString()
+                val fat=response.body()?.balanced?.fat.toString()
+                val carb=response.body()?.balanced?.carbs.toString()
+
+                val i =Intent(applicationContext, CalorieActivity::class.java)
+                i.putExtra("CALORIE",calorie)
+                i.putExtra("PROTEIN",protein)
+                i.putExtra("FAT",fat)
+                i.putExtra("CARB",carb)
+                startActivity(i)
+
 
             }
             else{
-                Log.d("CALORIE", "Error Fetching Bmi")
+                Log.d("CALORIE", "Error Fetching Calorie")
 
             }
+
         }
+    }
+
+    private fun showPleaseWaitProgressBar() {
+        calorieProgressBar.max=100
+        calorieProgressBar.progress=20
+        llPleaseWait.visibility= View.VISIBLE
     }
 }
