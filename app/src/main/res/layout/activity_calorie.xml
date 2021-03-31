@@ -163,7 +163,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="14dp"
-                android:text="Balanced Diet(40:30:30)"
+                android:text="Balanced Diet (40:30:30)"
                 android:textSize="24sp"
                 android:textStyle="bold"
                 android:textColor="@color/black"

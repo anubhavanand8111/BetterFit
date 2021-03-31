@@ -1,56 +1,83 @@
 package com.example.betterfit
 
+import android.annotation.SuppressLint
 import android.graphics.Color
 import android.os.Bundle
+import android.util.Log
 import androidx.appcompat.app.AppCompatActivity
 import com.github.mikephil.charting.components.Legend
 import com.github.mikephil.charting.data.PieData
 import com.github.mikephil.charting.data.PieDataSet
 import com.github.mikephil.charting.data.PieEntry
 import com.github.mikephil.charting.utils.ColorTemplate
+import com.google.android.material.bottomsheet.BottomSheetDialog
 import kotlinx.android.synthetic.main.activity_calorie.*
+import kotlinx.android.synthetic.main.macro_nutrients_bottom_sheet.*
 
 
 class CalorieActivity : AppCompatActivity() {
 
+    var protein:String?=null
+    var fat:String?=null
+    var carb:String?=null
 
     var pieData: PieData? = null
     var pieDataSet: PieDataSet? = null
     lateinit var pieEntries:ArrayList<PieEntry>
     lateinit var PieEntryLabels:ArrayList<Float>
 
+    @SuppressLint("SetTextI18n")
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_calorie)
         val calorie = intent.getStringExtra("CALORIE")
-        val protein = intent.getStringExtra("PROTEIN")
-        val fat = intent.getStringExtra("FAT")
-        val carb = intent.getStringExtra("CARB")
+         protein = intent.getStringExtra("PROTEIN")
+         fat = intent.getStringExtra("FAT")
+         carb = intent.getStringExtra("CARB")
 
         //result.text="calorie: $calorie \n protein: $protein \n fat: $fat \n carb: $carb"
         calorieTv.text=calorie?.toFloat()?.toInt().toString()
         getBalanceDietEntries()
+        setChart()
 
 
 
-        pieDataSet = PieDataSet(pieEntries, "\t Macro Nutrients Proportion")
-        pieData = PieData(pieDataSet)
-        pieChart.data=pieData
-        pieDataSet!!.setColors(*ColorTemplate.MATERIAL_COLORS)
-        pieDataSet!!.sliceSpace = 2f
-        pieDataSet!!.valueTextColor = Color.WHITE
-        pieDataSet!!.valueTextSize = 10f
+        selectDietTypeTv.setOnClickListener {
+            val bsd = BottomSheetDialog(this)
+            bsd.setContentView(R.layout.macro_nutrients_bottom_sheet)
 
-        pieDataSet!!.sliceSpace = 5f
+            bsd.balancedDietTv.setOnClickListener {
+                getBalanceDietEntries()
+                pieChart.clear()
+                setChart()
+                dietTypeTv.text=balancedDietTv.text.toString()
+                bsd.dismiss()
+            }
+            bsd.lowCarbsDietTv.setOnClickListener {
+                getLowCarbsEntries()
+                pieChart.clear()
+                setChart()
+                dietTypeTv.text=lowCarbsDietTv.text.toString()
+                bsd.dismiss()
+            }
 
-        val legend: Legend = pieChart.legend
-        legend.isEnabled=false
+            bsd.lowFatDietTv.setOnClickListener {
+                getLowFatEntries()
+                pieChart.clear()
+                setChart()
+                this.dietTypeTv.text="Low Fat Diet (50:30:20)"
+                bsd.dismiss()
+            }
+            bsd.highProteinDietTv.setOnClickListener {
+                getHighProteinEntries()
+                pieChart.clear()
+                setChart()
+                dietTypeTv.text=highProteinDietTv.text.toString()
+                bsd.dismiss()
+            }
 
-        //Pie chart Description
-        proteinGramTv.text=protein?.substring(0,5)+" gm"
-        carbsGramTv.text=carb?.substring(0,5)+" gm"
-        fatsGramTv.text=fat?.substring(0,5)+" gm"
-
+            bsd.show()
+        }
 
     }
 
@@ -81,6 +108,30 @@ class CalorieActivity : AppCompatActivity() {
         pieEntries.add(PieEntry(HighProtein.fat, "Fat"))
         pieEntries.add(PieEntry(HighProtein.carb, "Carb"))
 
+    }
+
+    private fun setChart(){
+
+        pieDataSet = PieDataSet(pieEntries, "\t Macro Nutrients Proportion")
+        pieData = PieData(pieDataSet)
+        pieChart.data=pieData
+        pieDataSet!!.setColors(*ColorTemplate.MATERIAL_COLORS)
+        pieDataSet!!.sliceSpace = 2f
+        pieDataSet!!.valueTextColor = Color.WHITE
+        pieDataSet!!.valueTextSize = 10f
+
+        pieDataSet!!.sliceSpace = 5f
+        pieChart.animateY(1000);
+
+        val legend: Legend = pieChart.legend
+        legend.isEnabled=false
+
+        //Pie chart Description
+        proteinGramTv.text=protein?.substring(0,5)+" gm"
+        carbsGramTv.text=carb?.substring(0,5)+" gm"
+        fatsGramTv.text=fat?.substring(0,5)+" gm"
+
+        Log.d("TEST","check")
     }
 
     object BalancedDiet{
