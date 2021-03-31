@@ -1,12 +1,180 @@
 <?xml version="1.0" encoding="utf-8"?>
+<ScrollView android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:android="http://schemas.android.com/apk/res/android">
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
+    android:orientation="vertical"
     android:layout_height="match_parent"
     tools:context=".CalorieActivity">
 <TextView
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:id="@+id/result"/>
+
+    <com.github.mikephil.charting.charts.PieChart
+        android:layout_width="match_parent"
+        android:layout_margin="14dp"
+        android:layout_height="300dp"
+        android:id="@+id/pieChart"/>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="14dp"
+        android:orientation="horizontal">
+<!--        Protein Legend-->
+        <RelativeLayout
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="wrap_content">
+            <View
+                android:layout_width="24dp"
+                android:layout_height="24dp"
+                android:id="@+id/proteinBox"
+                android:layout_marginRight="12dp"
+                android:background="#2DCC70"/>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="18sp"
+                android:id="@+id/proteinLegendTv"
+                android:text="Protein"
+                android:layout_toRightOf="@+id/proteinBox"/>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="160.8gm"
+                android:id="@+id/proteinGramTv"
+                android:layout_below="@+id/proteinLegendTv"
+                android:layout_centerHorizontal="true"/>
+        </RelativeLayout>
+
+<!--        Carbs Legend-->
+        <RelativeLayout
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="wrap_content">
+            <View
+                android:layout_width="24dp"
+                android:layout_height="24dp"
+                android:id="@+id/carbsBox"
+                android:layout_marginRight="12dp"
+                android:background="#E84C3D"/>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="18sp"
+                android:id="@+id/carbsLegendTv"
+                android:text="Carbs"
+                android:layout_toRightOf="@+id/carbsBox"/>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="160.8gm"
+                android:layout_centerHorizontal="true"
+                android:id="@+id/carbsGramTv"
+                android:layout_below="@+id/carbsLegendTv"
+                />
+        </RelativeLayout>
+
+<!--        Fats Legend-->
+
+        <RelativeLayout
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="wrap_content">
+            <View
+                android:layout_width="24dp"
+                android:layout_height="24dp"
+                android:id="@+id/fatBox"
+                android:layout_marginRight="12dp"
+                android:background="#F1C40F"/>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="18sp"
+                android:id="@+id/fatLegendTv"
+                android:text="Fats"
+                android:layout_toRightOf="@+id/fatBox"/>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="160.8gm"
+                android:id="@+id/fatsGramTv"
+                android:layout_below="@+id/fatLegendTv"
+                android:layout_centerHorizontal="true"/>
+        </RelativeLayout>
+    </LinearLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:orientation="vertical"
+        android:layout_margin="14dp"
+        android:layout_height="wrap_content">
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Calories"
+            android:textStyle="bold"
+            android:textSize="24sp"/>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="14dp"
+            tools:text="34553"
+            android:textSize="24sp"
+            android:textStyle="bold"
+            android:textColor="@color/black"
+            android:id="@+id/calorieTv"/>
+    </LinearLayout>
+    <View android:background="#777"
+        android:layout_width = "match_parent"
+        android:layout_margin="14dp"
+        android:layout_height="1dp"/>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:orientation="vertical"
+        android:layout_margin="14dp"
+        android:layout_height="wrap_content">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Diet Type"
+                android:textStyle="bold"
+                android:textSize="24sp"/>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Select Diet Type"
+                android:layout_marginLeft="14dp"
+                android:textStyle="bold"
+                android:id="@+id/selectDietTypeTv"
+                android:textSize="14sp"
+                android:textColor="#0095FF"/>
+        </LinearLayout>
+
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="14dp"
+                android:text="Balanced Diet(40:30:30)"
+                android:textSize="24sp"
+                android:textStyle="bold"
+                android:textColor="@color/black"
+                android:id="@+id/dietTypeTv"/>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text=""/>
+
+
+    </LinearLayout>
+
 </LinearLayout>
+</ScrollView>

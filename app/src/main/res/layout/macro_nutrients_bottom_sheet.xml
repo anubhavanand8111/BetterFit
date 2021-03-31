@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_margin="14dp"
+    android:layout_height="match_parent">
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+
+        android:text="Choose Diet Type"
+        android:textSize="24sp"/>
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:layout_marginTop="7dp"
+        android:background="#777"/>
+    <ListView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/dietTypeLv"/>
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_marginTop="14dp"
+        android:textSize="24sp"
+        android:textColor="@color/black"
+        android:id="@+id/balancedDietTv"
+        android:layout_height="wrap_content"
+        android:text="Balanced Diet (40:30:30)"/>
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_marginTop="14dp"
+        android:textSize="24sp"
+        android:textColor="@color/black"
+        android:id="@+id/lowFatDietTv"
+        android:layout_height="wrap_content"
+        android:text="Low Fat Diet (50:30:20)"/>
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_marginTop="14dp"
+        android:textSize="24sp"
+        android:textColor="@color/black"
+        android:id="@+id/lowCarbsDietTv"
+        android:layout_height="wrap_content"
+        android:text="Low Carbs Diet (25:35:40)"/>
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_marginTop="14dp"
+        android:textSize="24sp"
+        android:textColor="@color/black"
+        android:id="@+id/highProteinDietTv"
+        android:layout_height="wrap_content"
+        android:text="High Protein Diet (30:40:30)"/>
+</LinearLayout>
