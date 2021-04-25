@@ -1,4 +1,4 @@
-package com.example.betterfit
+package com.example.betterfit.ui.view.activity
 
 import android.annotation.SuppressLint
 import android.app.Dialog
@@ -6,15 +6,15 @@ import android.content.Intent
 import android.os.Bundle
 import android.os.CountDownTimer
 import android.speech.tts.TextToSpeech
-import android.util.Log
 import android.view.View
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.Toolbar
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.google.android.material.bottomsheet.BottomSheetDialogFragment
-import com.pierfrancescosoffritti.androidyoutubeplayer.core.player.YouTubePlayer
-import com.pierfrancescosoffritti.androidyoutubeplayer.core.player.listeners.AbstractYouTubePlayerListener
+import com.example.betterfit.*
+import com.example.betterfit.ui.adapter.ExerciseStatusAdapter
+import com.example.betterfit.ui.view.fragments.BottomFragment
+import com.example.betterfit.utils.Constants
 import kotlinx.android.synthetic.main.activity_exercise.*
 import kotlinx.android.synthetic.main.custom_dialog_back.*
 import kotlinx.android.synthetic.main.fragment_bottom.*
@@ -31,7 +31,7 @@ class ExerciseActivity : AppCompatActivity(), TextToSpeech.OnInitListener {
     private var tts:TextToSpeech?=null
     private var exerciseList : ArrayList<ExerciseModel>?=null
     private var currentPosition=-1
-    private var exerciseAdapter:ExerciseStatusAdapter?=null
+    private var exerciseAdapter: ExerciseStatusAdapter?=null
 
     @SuppressLint("InflateParams")
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -77,8 +77,8 @@ class ExerciseActivity : AppCompatActivity(), TextToSpeech.OnInitListener {
     override fun onBackPressed() {
         super.onBackPressed()
         overridePendingTransition(
-            R.anim.slide_in_left,
-            R.anim.slide_out_right
+                R.anim.slide_in_left,
+                R.anim.slide_out_right
         )
     }
 
@@ -133,8 +133,8 @@ class ExerciseActivity : AppCompatActivity(), TextToSpeech.OnInitListener {
                     startActivity(i)
                     finish()
                     overridePendingTransition(
-                        R.anim.slide_in_left,
-                        R.anim.slide_out_right
+                            R.anim.slide_in_left,
+                            R.anim.slide_out_right
                     )
                 }
             }
@@ -223,8 +223,8 @@ class ExerciseActivity : AppCompatActivity(), TextToSpeech.OnInitListener {
         customDialog.cdYes.setOnClickListener {
             finish()
             overridePendingTransition(
-                R.anim.slide_in_left,
-                R.anim.slide_out_right
+                    R.anim.slide_in_left,
+                    R.anim.slide_out_right
             )
             customDialog.dismiss()
         }

@@ -1,19 +1,14 @@
-package com.example.betterfit
+package com.example.betterfit.ui.view.activity
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.widget.Toast
 import androidx.appcompat.widget.Toolbar
-import androidx.recyclerview.widget.LinearLayoutManager
+import com.example.betterfit.R
 import com.example.betterfit.db.AppDatabase
 import com.example.betterfit.db.TimeData
 import kotlinx.android.synthetic.main.activity_finish.*
-import kotlinx.android.synthetic.main.activity_history.*
-import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.launch
-import kotlinx.coroutines.withContext
-import java.util.*
 
 class FinishActivity : AppCompatActivity() {
 

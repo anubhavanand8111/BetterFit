@@ -1,4 +1,4 @@
-package com.example.betterfit
+package com.example.betterfit.ui.view.fragments
 
 import android.os.Bundle
 import android.util.Log
@@ -6,6 +6,8 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.DialogFragment
+import com.example.betterfit.R
+import com.example.betterfit.ui.view.activity.ExerciseActivity
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment
 import com.pierfrancescosoffritti.androidyoutubeplayer.core.player.YouTubePlayer
 import com.pierfrancescosoffritti.androidyoutubeplayer.core.player.listeners.AbstractYouTubePlayerListener

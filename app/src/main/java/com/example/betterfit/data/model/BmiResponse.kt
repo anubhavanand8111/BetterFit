@@ -1,4 +1,4 @@
-package com.example.betterfit
+package com.example.betterfit.data.model
 
 import com.google.gson.annotations.SerializedName
 

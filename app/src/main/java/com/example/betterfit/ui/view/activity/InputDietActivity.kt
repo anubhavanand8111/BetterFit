@@ -1,23 +1,22 @@
-package com.example.betterfit
+package com.example.betterfit.ui.view.activity
 
 import android.content.Intent
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.util.Log
 import android.view.View
-import androidx.core.content.ContentProviderCompat.requireContext
-
-import com.example.betterfit.Services.FitnessCalculatorApiService
+import android.widget.Toast
+import androidx.appcompat.app.AppCompatActivity
+import androidx.lifecycle.ViewModelProvider
+import com.example.betterfit.R
+import com.example.betterfit.ui.viewmodel.CalorieViewModel
+import com.example.betterfit.utils.Status
 import com.google.android.material.snackbar.Snackbar
-import kotlinx.android.synthetic.main.activity_b_m_i.*
-
 import kotlinx.android.synthetic.main.activity_input_diet.*
-import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.GlobalScope
-import kotlinx.coroutines.launch
-import kotlinx.coroutines.withContext
 
 class InputDietActivity : AppCompatActivity() {
+
+    private val vm by lazy {
+        ViewModelProvider(this).get(CalorieViewModel::class.java)
+    }
 
     private var mAge:String=""
     private var mHeight:String=""
@@ -72,35 +71,39 @@ class InputDietActivity : AppCompatActivity() {
 
     private fun getCalories(mAge: String, mGender: String, mHeight: String, mWeight: String, mActivityLevel: String, goal: String) {
 
-        showPleaseWaitProgressBar()
+        vm.getUserCalorie(mAge,mGender,mHeight,mWeight,mActivityLevel,goal).observe(this, {
+            it?.let { resource ->
+                when (resource.status) {
+                    Status.SUCCESS -> {
+                        llPleaseWait.visibility=View.GONE
+                        resource.data.let { v ->
 
-        GlobalScope.launch(Dispatchers.Main) {
+                            val calorie=v?.calorie.toString()
+                            val protein=v?.balanced?.protein.toString()
+                            val fat=v?.balanced?.fat.toString()
+                            val carb=v?.balanced?.carbs.toString()
 
-            val response = withContext(Dispatchers.IO) {
-                FitnessCalculatorApiService.bmiInstance.getCalorie(mAge,mGender, mHeight,mWeight,mActivityLevel,goal)
+                            val i=Intent(applicationContext,CalorieActivity::class.java)
+                            i.putExtra("CALORIE",calorie)
+                            i.putExtra("PROTEIN",protein)
+                            i.putExtra("FAT",fat)
+                            i.putExtra("CARB",carb)
+                            startActivity(i)
+
+                        }
+                    }
+
+                    Status.ERROR -> {
+                        llPleaseWait.visibility=View.GONE
+                        Toast.makeText(this, it.message, Toast.LENGTH_SHORT).show()
+                    }
+                    Status.LOADING -> {
+                       showPleaseWaitProgressBar()
+                    }
+                }
             }
-            if (response.isSuccessful){
-                llPleaseWait.visibility=View.GONE
-                val calorie=response.body()?.calorie.toString()
-                val protein=response.body()?.balanced?.protein.toString()
-                val fat=response.body()?.balanced?.fat.toString()
-                val carb=response.body()?.balanced?.carbs.toString()
+        })
 
-                val i =Intent(applicationContext, CalorieActivity::class.java)
-                i.putExtra("CALORIE",calorie)
-                i.putExtra("PROTEIN",protein)
-                i.putExtra("FAT",fat)
-                i.putExtra("CARB",carb)
-                startActivity(i)
-
-
-            }
-            else{
-                Log.d("CALORIE", "Error Fetching Calorie")
-
-            }
-
-        }
     }
 
     private fun showPleaseWaitProgressBar() {

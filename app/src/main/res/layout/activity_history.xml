@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context=".HistoryActivity">
+    tools:context=".ui.view.activity.HistoryActivity">
 
     <androidx.appcompat.widget.Toolbar
         android:id="@+id/historyActivityToolbar"
@@ -15,6 +15,7 @@
     <androidx.recyclerview.widget.RecyclerView
         android:layout_width="match_parent"
         android:id="@+id/rvHistory"
+        tools:listitem="@layout/item_history"
         android:layout_height="match_parent"/>
 
 </LinearLayout>

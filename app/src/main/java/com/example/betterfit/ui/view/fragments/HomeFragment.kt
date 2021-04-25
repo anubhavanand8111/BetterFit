@@ -1,4 +1,4 @@
-package com.example.betterfit.fragments
+package com.example.betterfit.ui.view.fragments
 
 import android.content.Intent
 import android.os.Bundle
@@ -6,9 +6,9 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import com.example.betterfit.ActivityBMI
-import com.example.betterfit.ExerciseActivity
-import com.example.betterfit.HistoryActivity
+import com.example.betterfit.ui.view.activity.ActivityBMI
+import com.example.betterfit.ui.view.activity.ExerciseActivity
+import com.example.betterfit.ui.view.activity.HistoryActivity
 import com.example.betterfit.R
 import kotlinx.android.synthetic.main.fragment_home.*
 

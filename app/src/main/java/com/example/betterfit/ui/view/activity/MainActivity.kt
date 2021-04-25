@@ -1,16 +1,12 @@
-package com.example.betterfit
+package com.example.betterfit.ui.view.activity
 
-import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.view.View
-import android.widget.Button
-import android.widget.Toast
-import androidx.appcompat.widget.Toolbar
-import com.example.betterfit.db.AppDatabase
-import com.example.betterfit.fragments.DietFragment
-import com.example.betterfit.fragments.ExerciseFragment
-import com.example.betterfit.fragments.HomeFragment
+import com.example.betterfit.R
+import com.example.betterfit.ui.view.fragments.TabViewPager
+import com.example.betterfit.ui.view.fragments.DietFragment
+import com.example.betterfit.ui.view.fragments.ExerciseFragment
+import com.example.betterfit.ui.view.fragments.HomeFragment
 import kotlinx.android.synthetic.main.activity_main.*
 
 class MainActivity : AppCompatActivity() {

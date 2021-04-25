@@ -1,4 +1,4 @@
-package com.example.betterfit
+package com.example.betterfit.ui.adapter
 
 import android.annotation.SuppressLint
 import android.view.LayoutInflater
@@ -6,6 +6,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
+import com.example.betterfit.R
 import com.example.betterfit.db.TimeData
 import java.text.SimpleDateFormat
 import java.util.*
@@ -17,8 +18,8 @@ class TimeAdapter(private var timeList: ArrayList<TimeData>):RecyclerView.Adapte
         val tvDate: TextView = view.findViewById(R.id.tvDate)
     }
 
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): TimeAdapter.ItemHolder {
-        return TimeAdapter.ItemHolder(
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ItemHolder {
+        return ItemHolder(
                 LayoutInflater.from(parent.context).inflate(R.layout.item_history, parent, false)
         )
     }

@@ -1,29 +1,29 @@
-package com.example.betterfit
+package com.example.betterfit.ui.view.activity
 
 import android.annotation.SuppressLint
-import android.opengl.Visibility
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.util.Log
 import android.view.View
 import android.widget.Toast
-import com.example.betterfit.Services.FitnessCalculatorApiService
+import androidx.lifecycle.ViewModelProvider
+import com.example.betterfit.R
+import com.example.betterfit.data.api.service.FitnessCalculatorApiService
+import com.example.betterfit.ui.viewmodel.BmiViewModel
+import com.example.betterfit.utils.Status
 
 import kotlinx.android.synthetic.main.activity_b_m_i.*
-import kotlinx.android.synthetic.main.fragment_bottom.*
+import kotlinx.android.synthetic.main.activity_exercise.*
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
-import org.json.JSONObject
-import retrofit2.Call
-import retrofit2.Callback
-import retrofit2.Response
-import java.math.BigDecimal
-import java.math.RoundingMode
 
 class ActivityBMI : AppCompatActivity() {
 
+
+    private val vm by lazy {
+        ViewModelProvider(this).get(BmiViewModel::class.java)
+    }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -93,22 +93,31 @@ class ActivityBMI : AppCompatActivity() {
 
     @SuppressLint("SetTextI18n")
     private fun getBmitv1(weight:String, height:String)   {
-        showBmiProgress1()
+        //showBmiProgress1()
 
-       GlobalScope.launch(Dispatchers.Main) {
+        vm.getUserBmi("22",weight,height).observe(this, {
+            it?.let { resource ->
+                when (resource.status) {
+                    Status.SUCCESS -> {
+                        bmiProgressBar1.visibility=View.GONE
+                        resource.data.let { v ->
+                            tvBmi.text = "Your Bmi: ${v?.bmi.toString().substring(0,5)}"
+                            healthTv1.text = "Your Health: ${v?.health.toString()}"
 
-           val response = withContext(Dispatchers.IO) {
-               FitnessCalculatorApiService.bmiInstance.getBmi("22",weight, height)
-           }
-           if (response.isSuccessful){
-               bmiProgressBar1.visibility=View.GONE
-               tvBmi.text = "Your BMI: ${response.body()?.bmi.toString().substring(0,4)}"
-               healthTv1.text="Your Health: ${response.body()?.health.toString()}"
-           }
-           else{
-               tvBmi.text = "Error Fetching Bmi"
-           }
-       }
+                        }
+                    }
+
+                    Status.ERROR -> {
+                        bmiProgressBar1.visibility=View.GONE
+                        Toast.makeText(this, it.message, Toast.LENGTH_SHORT).show()
+                    }
+                    Status.LOADING -> {
+                        showBmiProgress1()
+                    }
+                }
+            }
+        })
+
 
     }
 
@@ -121,20 +130,28 @@ class ActivityBMI : AppCompatActivity() {
 
     @SuppressLint("SetTextI18n")
     private fun getBmitv2(weight:String, height:String)   {
-        showBmiProgress2()
-        GlobalScope.launch(Dispatchers.Main) {
-            val response = withContext(Dispatchers.IO) {
-                FitnessCalculatorApiService.bmiInstance.getBmi("22",weight, height)
+        vm.getUserBmi("22",weight,height).observe(this, {
+            it?.let { resource ->
+                when (resource.status) {
+                    Status.SUCCESS -> {
+                        bmiProgressBar2.visibility=View.GONE
+                        resource.data.let { v ->
+                            tvBmi2.text = "Your Bmi: ${v?.bmi.toString().substring(0,5)}"
+                            healthTv2.text = "Your Health: ${v?.health.toString()}"
+
+                        }
+                    }
+
+                    Status.ERROR -> {
+                        bmiProgressBar2.visibility=View.GONE
+                        Toast.makeText(this, it.message, Toast.LENGTH_SHORT).show()
+                    }
+                    Status.LOADING -> {
+                        showBmiProgress2()
+                    }
+                }
             }
-            if (response.isSuccessful){
-                bmiProgressBar2.visibility=View.GONE
-                tvBmi2.text = "Your BMI: ${response.body()?.bmi.toString().substring(0,4)}"
-                healthTv2.text="Your Health: ${response.body()?.health.toString()}"
-            }
-            else{
-                tvBmi2.text = "Error Fetching Bmi"
-            }
-        }
+        })
 
     }
 

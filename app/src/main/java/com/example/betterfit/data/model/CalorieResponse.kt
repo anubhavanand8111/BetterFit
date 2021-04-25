@@ -1,4 +1,4 @@
-package com.example.betterfit
+package com.example.betterfit.data.model
 
 data class CalorieResponse(
 	val lowcarbs: Lowcarbs? = null,

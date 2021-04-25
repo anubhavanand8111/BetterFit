@@ -1,4 +1,4 @@
-package com.example.betterfit.fragments
+package com.example.betterfit.ui.view.fragments
 
 import android.os.Bundle
 import androidx.fragment.app.Fragment

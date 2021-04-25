@@ -1,4 +1,4 @@
-package com.example.betterfit.fragments
+package com.example.betterfit.ui.view.fragments
 
 import android.annotation.SuppressLint
 import android.content.Intent
@@ -8,7 +8,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
-import com.example.betterfit.InputDietActivity
+import com.example.betterfit.ui.view.activity.InputDietActivity
 import com.example.betterfit.R
 
 import kotlinx.android.synthetic.main.fragment_diet.*
@@ -81,7 +81,7 @@ class DietFragment : Fragment(),View.OnClickListener {
                 goal= "extremegain"
             }
             R.id.goalFab -> {
-               val i =Intent(requireContext(),InputDietActivity::class.java)
+               val i =Intent(requireContext(), InputDietActivity::class.java)
                 i.putExtra("GOAL",goal)
                 startActivity(i)
             }
