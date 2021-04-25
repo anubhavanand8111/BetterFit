@@ -7,7 +7,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
-import com.example.betterfit.ExerciseModel
+import com.example.betterfit.data.model.ExerciseModel
 import com.example.betterfit.R
 
 class ExerciseStatusAdapter(private var exerciseList:ArrayList<ExerciseModel>): RecyclerView.Adapter<ExerciseStatusAdapter.ItemHolder>() {

@@ -1,6 +1,6 @@
 package com.example.betterfit.utils
 
-import com.example.betterfit.ExerciseModel
+import com.example.betterfit.data.model.ExerciseModel
 import com.example.betterfit.R
 
 class Constants {

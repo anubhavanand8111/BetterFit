@@ -12,6 +12,7 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.Toolbar
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.betterfit.*
+import com.example.betterfit.data.model.ExerciseModel
 import com.example.betterfit.ui.adapter.ExerciseStatusAdapter
 import com.example.betterfit.ui.view.fragments.BottomFragment
 import com.example.betterfit.utils.Constants

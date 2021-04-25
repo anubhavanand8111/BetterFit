@@ -1,4 +1,4 @@
-package com.example.betterfit
+package com.example.betterfit.data.model
 
 class ExerciseModel(var id:Int,
                     var name:String,
