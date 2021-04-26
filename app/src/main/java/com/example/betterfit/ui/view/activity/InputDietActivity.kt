@@ -14,9 +14,7 @@ import kotlinx.android.synthetic.main.activity_input_diet.*
 
 class InputDietActivity : AppCompatActivity() {
 
-    private val vm by lazy {
-        ViewModelProvider(this).get(CalorieViewModel::class.java)
-    }
+
 
     private var mAge:String=""
     private var mHeight:String=""
@@ -61,7 +59,14 @@ class InputDietActivity : AppCompatActivity() {
             else{
 
                 if (goal != null) {
-                    getCalories(mAge,mGender,mHeight,mWeight,mActivityLevel,goal)
+                    val i=Intent(applicationContext,CalorieActivity::class.java)
+                    i.putExtra("AGE",mAge)
+                    i.putExtra("GENDER",mGender)
+                    i.putExtra("HEIGHT",mHeight)
+                    i.putExtra("WEIGHT",mWeight)
+                    i.putExtra("ACTIVITYLEVEL",mActivityLevel)
+                    i.putExtra("GOAL",goal)
+                    startActivity(i)
 
                 }
             }
@@ -69,46 +74,5 @@ class InputDietActivity : AppCompatActivity() {
 
     }
 
-    private fun getCalories(mAge: String, mGender: String, mHeight: String, mWeight: String, mActivityLevel: String, goal: String) {
 
-        vm.getUserCalorie(mAge,mGender,mHeight,mWeight,mActivityLevel,goal).observe(this, {
-            it?.let { resource ->
-                when (resource.status) {
-                    Status.SUCCESS -> {
-                        llPleaseWait.visibility=View.GONE
-                        resource.data.let { v ->
-
-                            val calorie=v?.calorie.toString()
-                            val protein=v?.balanced?.protein.toString()
-                            val fat=v?.balanced?.fat.toString()
-                            val carb=v?.balanced?.carbs.toString()
-
-                            val i=Intent(applicationContext,CalorieActivity::class.java)
-                            i.putExtra("CALORIE",calorie)
-                            i.putExtra("PROTEIN",protein)
-                            i.putExtra("FAT",fat)
-                            i.putExtra("CARB",carb)
-                            startActivity(i)
-
-                        }
-                    }
-
-                    Status.ERROR -> {
-                        llPleaseWait.visibility=View.GONE
-                        Toast.makeText(this, it.message, Toast.LENGTH_SHORT).show()
-                    }
-                    Status.LOADING -> {
-                       showPleaseWaitProgressBar()
-                    }
-                }
-            }
-        })
-
-    }
-
-    private fun showPleaseWaitProgressBar() {
-        calorieProgressBar.max=100
-        calorieProgressBar.progress=20
-        llPleaseWait.visibility= View.VISIBLE
-    }
 }

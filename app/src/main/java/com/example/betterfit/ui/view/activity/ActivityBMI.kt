@@ -7,16 +7,11 @@ import android.view.View
 import android.widget.Toast
 import androidx.lifecycle.ViewModelProvider
 import com.example.betterfit.R
-import com.example.betterfit.data.api.service.FitnessCalculatorApiService
 import com.example.betterfit.ui.viewmodel.BmiViewModel
 import com.example.betterfit.utils.Status
 
 import kotlinx.android.synthetic.main.activity_b_m_i.*
-import kotlinx.android.synthetic.main.activity_exercise.*
-import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.GlobalScope
-import kotlinx.coroutines.launch
-import kotlinx.coroutines.withContext
+
 
 class ActivityBMI : AppCompatActivity() {
 
