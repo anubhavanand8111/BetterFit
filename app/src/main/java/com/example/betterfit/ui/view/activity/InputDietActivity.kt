@@ -19,7 +19,7 @@ class InputDietActivity : AppCompatActivity() {
     private var mAge:String=""
     private var mHeight:String=""
     private var mWeight:String=""
-    private var mActivityLevel:String ="0"
+    private var mActivityLevel:String ="1"
     private var mGender:String="male"
 
     override fun onCreate(savedInstanceState: Bundle?) {

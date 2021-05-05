@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "806266661240",
+    "project_id": "better-fit-a529d",
+    "storage_bucket": "better-fit-a529d.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:806266661240:android:8776b51861c268e77d408d",
+        "android_client_info": {
+          "package_name": "com.example.betterfit"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "806266661240-dd5c1m18n49cgquum4gn8igq65glt8mi.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.betterfit",
+            "certificate_hash": "d01e79feb90a15d8cbbf484e0fc0997911979222"
+          }
+        },
+        {
+          "client_id": "806266661240-96v86606knlnitc2a4pjfqtjelhkpbe2.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyA__cR44axtwBuL1pa1M9zpMej9fVligD0"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "806266661240-96v86606knlnitc2a4pjfqtjelhkpbe2.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
